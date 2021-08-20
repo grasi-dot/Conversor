@@ -1,6 +1,6 @@
 # Conversor de moedas <img align="center" alt="Grasi-Flutter" height="70" width="80" src="https://media.giphy.com/media/lMtPsOvMRgdavcHjbU/giphy.gif">
 
-Este aplicativo tem como objetivo converter valores seja para real, dolar e euro 
+Este aplicativo tem como objetivo converter valores para real, dolar e euro.
 
 
 ## Ferramentas :point_left:
