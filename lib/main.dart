@@ -68,57 +68,58 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text("\$ Conversor \$"),
-          backgroundColor: Colors.amber,
-          centerTitle: true,
-        ),
-        body: FutureBuilder<Map>(
-            future: getData(),
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                case ConnectionState.waiting:
-                  return Center(
-                      child: Text(
-                    "Carregando dados...",
-                    style: TextStyle(color: Colors.black, fontSize: 25.0),
-                    textAlign: TextAlign.center,
-                  ));
-                default:
-                  if (snapshot.hasError) {
-                    return Center(
-                        child: Text(
-                      "Erro ao carregar os dados!",
-                      style: TextStyle(color: Colors.grey, fontSize: 25.0),
-                      textAlign: TextAlign.center,
-                    ));
-                  } else {
-                    dolar =
-                        snapshot.data["results"]["currencies"]["USD"]["buy"];
-                    euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
-                    return SingleChildScrollView(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Icon(Icons.monetization_on,
-                              size: 150.0, color: Colors.amber),
-                          buildTextField(
-                              "Reais", "R\$", realController, _realChanged),
-                          Divider(),
-                          buildTextField("Dolares", "US\$", dolarController,
-                              _dolarChanged),
-                          Divider(),
-                          buildTextField(
-                              "Euros", "€\$", euroController, _euroChanged)
-                        ],
-                      ),
-                    );
-                  }
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text("\$ Conversor \$"),
+        backgroundColor: Colors.amber,
+        centerTitle: true,
+      ),
+      body: FutureBuilder<Map>(
+        future: getData(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              return Center(
+                  child: Text(
+                "Carregando dados...",
+                style: TextStyle(color: Colors.black, fontSize: 25.0),
+                textAlign: TextAlign.center,
+              ));
+            default:
+              if (snapshot.hasError) {
+                return Center(
+                    child: Text(
+                  "Erro ao carregar os dados!",
+                  style: TextStyle(color: Colors.grey, fontSize: 25.0),
+                  textAlign: TextAlign.center,
+                ));
+              } else {
+                dolar =
+                    snapshot.data["results"]["currencies"]["USD"]["buy"];
+                euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
+                return SingleChildScrollView(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Icon(Icons.monetization_on,
+                          size: 150.0, color: Colors.amber),
+                      buildTextField(
+                          "Reais", "R\$", realController, _realChanged),
+                      Divider(),
+                      buildTextField("Dolares", "US\$", dolarController,
+                          _dolarChanged),
+                      Divider(),
+                      buildTextField(
+                          "Euros", "€\$", euroController, _euroChanged)
+                    ],
+                  ),
+                );
               }
-            }));
+          }
+        }
+    ));
   }
 }
 
